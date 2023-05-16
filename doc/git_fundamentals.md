@@ -91,6 +91,39 @@ The following diagram[^2] shows different branches in a repository:
 
 ![branches](data/git_branches.png "branches")
 
+## Tags
+
+Tags are also pointers to a commit object. They provide a way to mark specific commits in your Git repository that can be used as:
+
+- Versioning releases of your software (v1.0.0, v2.0.0, etc)
+- Indicating stable releases, beta versions, etc
+- Marking deployments of your app
+- Creating named checkpoints that can be revisited later
+
+```bash
+# list all tags
+git tag -l
+INIT_DRAFT # one tag in this repo
+
+# show tag object sha1
+cat .git/refs/tags/INIT_DRAF
+055918dbe5766054089f4ae31bdee897c174de54
+
+# cat tag object type
+git cat-file -t 055918dbe5766054089f4ae31bdee897c174de54
+tag
+
+# cat tag object content
+git cat-file -p 055918dbe5766054089f4ae31bdee897c174de54
+object 7340fbdaa5d24652a66ad183a0e5382b7ad7d8d7
+type commit
+tag INIT_DRAFT
+tagger fengbin dong <fengbin.dong@spirent.com> 1684226732 +0800
+
+tag for first draft
+
+```
+
 ## Repos in github
 
   ![github repos](data/repo_diagram.drawio.png "github repos")

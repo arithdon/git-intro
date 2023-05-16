@@ -17,6 +17,8 @@ Git is a version control system that allows multiple developers to contribute to
   - [Objects](doc/git_fundamentals.md#objects)
   - [Index](doc/git_fundamentals.md#index)
   - [Areas and states](doc/git_fundamentals.md#areas-and-states)
+  - [Branches](doc/git_fundamentals.md#branches)  
+  - [Tags](doc/git_fundamentals.md#tags)
   - [Repos in github](doc/git_fundamentals.md#repos-in-github)
 - [Create git repo from scratch](doc/git_internals.md)
   - [create repo with porcelain commands](doc/git_internals.md#create-repo-with-porcelin-commands)
