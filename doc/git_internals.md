@@ -1,8 +1,19 @@
 # Create repo from scratch
 
-In order to better understand git, we will create a repo from scratch with pluming commands.
+## Create a repo with porcelin commands
 
-## Create a repo
+```bash
+mkdir myrepo
+cd myrepo
+git init
+echo "m1" > README.md
+git add README.md
+git commit -m "init commit"
+```
+
+## Create a repo with plumbing commands
+
+In order to better understand git, we will create a repo from scratch with pluming commands.
 
 ```bash
 mkdir myrepo
