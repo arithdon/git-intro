@@ -1,6 +1,6 @@
 # Create repo from scratch
 
-## Create a repo with porcelin commands
+## Create a repo with porcelain commands
 
 ```bash
 mkdir myrepo
