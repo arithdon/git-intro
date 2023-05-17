@@ -93,6 +93,80 @@ git revert drop some commits by create new commit
 - git rm update staging index as well compared to rm only
 - git clean : get rid of unstaging files
 
+## git reflog
+
+The Git reflog is a history of changes to the local repository's HEAD. It records where HEAD was previously pointing to.
+
+The reflog allows you to see where HEAD and branches have been in the past, and lets you recover lost commits. It's essentially a history of the value of HEAD over time.
+
+Some common uses of the Git reflog are:
+
+- Recovering lost commits. If you accidentally move HEAD and lose commits, you can find them again in the reflog.
+- Checking past values of HEAD. This can be useful when debugging or trying to see the state of the repo at a previous point in time.
+- Finding the last branch you were on. If you detach HEAD and can't remember what branch you were on before, the reflog contains that information.
+
+To view the Git reflog, use the git reflog command:
+
+```bash
+git reflog
+
+# output
+65a79b0 (HEAD) HEAD@{0}: checkout: moving from main to 65a79b0
+96227fb (origin/main, main) HEAD@{1}: checkout: moving from 96227fb5a68c7b23a9f8a16e397163ee802572da to main
+96227fb (origin/main, main) HEAD@{2}: checkout: moving from 9bbc891b5b95743619f4c58e513f2eded71c8962 to HEAD@{5}
+9bbc891 HEAD@{3}: checkout: moving from newdev to 9bbc891
+c13e8e3 (newdev) HEAD@{4}: checkout: moving from c13e8e384b1b3dc35539c68c7cbfc1851ddf710c to newdev
+c13e8e3 (newdev) HEAD@{5}: checkout: moving from main to c13e8e3
+96227fb (origin/main, main) HEAD@{6}: checkout: moving from b87d5bd48114b18fadad04b0017bd68441004f3c to main
+b87d5bd (tag: TEST2, tag: TEST1) HEAD@{7}: checkout: moving from main to TEST2
+96227fb (origin/main, main) HEAD@{8}: checkout: moving from 65a79b0c100a04671d17147c2c9051f24408b26e to main
+65a79b0 (HEAD) HEAD@{9}: checkout: moving from main to 65a79b0
+96227fb (origin/main, main) HEAD@{10}: checkout: moving from dev4 to main
+68b57a2 (origin/dev4, dev4) HEAD@{11}: commit: update
+b87d5bd (tag: TEST2, tag: TEST1) HEAD@{12}: commit: update
+```
+
+Each entry shows:
+
+- The commit SHA that HEAD pointed to
+- The name of the reference (usually HEAD)
+- The @{n} suffix indicating older entries
+- The message showing what operation was done to that reference
+
+The reflog only exists locally - it is not pushed to remote repositories. It keeps a history of the last few thousand changes of HEAD (default is 90 days worth of entries).
+
+To recover a lost commit, you locate it in the reflog, then reset HEAD to it or create a branch at it. For example:
+
+```bash
+git reset --hard HEAD@{2}     # Set HEAD to where it was 2 moves ago 
+git checkout -b NEW_BRANCH HEAD@{5} # Create branch at where HEAD was 5 moves ago
+```
+
+## detached HEAD state
+
+"detached HEAD" state in Git means that your HEAD pointer is not a branch. This usually happens when you checkout a specific commit or tag.
+
+To reattach your HEAD to a branch, you have a few options:
+
+- checkout existing branch
+
+```bash
+git checkout main # switch to main branch
+```
+
+- create new branch from current commit
+
+```bash
+git checkout -b new_branch [COMMIT_HASH] # create new branch from current commit
+```
+
+- reset to existing branch
+
+```bash
+git reflog 
+git checkout HEAD@{n} # n is the number of the commit you want to go back to
+```
+
 ## submodule
 
 Git submodules allow you to keep a Git repository as a subdirectory of another Git repository. This is useful when you want to have separate repositories for different parts/projects, but also want to keep them organized within one main repository.

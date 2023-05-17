@@ -28,6 +28,8 @@ Git is a version control system that allows multiple developers to contribute to
 - [Advanced Topics](doc/advanced_topics.md)
   - [merge vs rebase](doc/advanced_topics.md#merge-vs-rebase)
   - [reset vs revert](doc/advanced_topics.md#reset-vs-revert)
+  - [reflog](doc/advanced_topics.md#git-reflog)
+  - [detached HEAD state](doc/advanced_topics.md#detached-head-state)
   - [submodule](doc/advanced_topics.md#submodule)
   - [comment](doc/advanced_topics.md#comment)  
 - [Workflows](doc/git_workflows.md)
