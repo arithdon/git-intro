@@ -112,9 +112,9 @@ There are three areas in local workspace that contain git objects in different s
 
 ![file life cycle](data/git_file_lifecycle.png "file life cycle")
 
-## Branches
+## Branch
 
-Branches are just pointers to a commit object.
+Branch is just pointer to a commit object.
 
 The following diagram[^2] shows different branches in a repository:
 
