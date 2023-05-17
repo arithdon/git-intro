@@ -99,7 +99,7 @@ update9@d.txt
 ```bash
 git add d.txt
 git merge --continue
-git push
+git commit . -m "merged d.txt"
 ```
 
 **TIPS:**

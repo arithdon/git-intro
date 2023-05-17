@@ -65,7 +65,7 @@ Note that the first time you use https you will be asked for your username and p
 
 ## git config
 
-   ```bash
+  ```bash
   git config --global user.name=${YOUR_USERNAME}
   git config --global user.email=${YOUR_EMAIL_ADDRESS}
   git config --global -l
@@ -88,6 +88,13 @@ Note that the first time you use https you will be asked for your username and p
   ```
 
 ## git clone/pull/fetch
+
+- git fetch
+  - Downloads data from a remote repository that you don't have yet. It retrieves data that you don't have, but doesn't merge any changes into your branch. This allows you to inspect changes before merging them in.
+- git pull
+  - Incorporates changes from a remote repository into the current branch. Pull performs a fetch and then a merge. This is convenient and updates your local version, but can lead to conflicts if not done carefully.
+- git clone
+  - Creates a local copy of a remote repository. It clones the entire source repository, creates a local branch to track the source's branch (usually master), and sets up remote tracking so you can pull/push to the remote
 
   ```bash
   # clone:  get entire repo into local storage
