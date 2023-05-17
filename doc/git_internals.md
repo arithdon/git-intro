@@ -13,7 +13,7 @@ git commit -m "init commit"
 
 ## Create a repo with plumbing commands
 
-In order to better understand git, we will create a repo from scratch with pluming commands.
+In order to better understand git, we will create a repo from scratch with plumbing commands.
 
 ```bash
 mkdir myrepo

@@ -1,9 +1,5 @@
 # Basic git usage
 
-## Porcelain and Plumbing
-
-Percelain commands are high level commands that are easy to use and understand. Plumbing commands are low level commands that are used to build porcelain commands.
-
 ## git config
 
    ```bash

@@ -135,6 +135,35 @@ tag for first draft
 - upstream
         - the repo that fork from
 
+## Porcelain and Plumbing
+
+As mentioned that git is a command line based application and commands are categorized as either "porcelain" or "plumbing" commands. This refers to the level of abstraction they operate at.
+
+Porcelain commands are higher level, aimed at end users, and hide implementation details.
+
+Plumbing commands are lower level, aimed at Git experts, and expose more of Git's internal workings.
+
+Some ways to tell if a Git command is porcelain or plumbing:
+
+- Porcelain commands usually have friendly names, e.g. git add, git commit, git push. Plumbing commands usually include "git-" and are more obscure, e.g. git-receive-pack, git-unpack-file, git-apply.
+- Porcelain commands have more options and functionality aimed at convenience, plumbing commands have minimal options focused on one task.
+- Porcelain commands implicitly pass through plumbing commands under the hood. So a porcelain command may execute several plumbing commands to achieve its goal.
+- Plumbing commands operate on raw Git data - commits, objects, refs, etc. Porcelain commands operate on higher level concepts - files, directories, diffs.
+- The output of plumbing commands is bare and machine readable. Porcelain command output is formatted for humans.
+- Plumbing commands are rarely updated or changed to maintain Git's internal API. Porcelain commands often gain new options and functionality.
+
+**TIP: the commands that are listed in "git help" output are porcelain commands (this could be wrong in some revisions of git).**
+
+Some examples of porcelain vs plumbing commands:
+
+| Porcelain | Plumbing |
+|:--|:--|
+| git add   | git-unpack-file|
+| git commit   | git-commit-tree|
+| git push   | git-receive-pack|
+| git status   | git-update-index|
+| git log   | git-rev-list|
+
 [^1]: <https://www.freecodecamp.org/news/content/images/2020/12/image-41.png>
 [^2]: <https://www.freecodecamp.org/news/content/images/2020/12/image-48.png>
 

@@ -12,9 +12,9 @@ Merge creates new commit with changes (and commit histroy of both branches) and 
 
   ![git merge](data/git_merge_diagram.png "git merge")
 
-Merging is non-destructive operation and existing branche are not changed in any way.
+Merging is non-destructive operation and existing branch are not changed in any way.
 
-Rebase does two steps:
+Rebase does the following steps:
 
 - take away and save temporarily the commits after common commit
 - fast forward to the new common commit
@@ -24,7 +24,7 @@ The following diagram shows the result of a rebasing feature branch from main:
 
   ![git rebase](data/git_rebase_diagram.png "git rebase")
 
-As you can see the commit histroy altered.
+As you can see the commit history is altered.
 
 ### example
 
@@ -65,7 +65,7 @@ git reset has three different modes:
 - It lets you quickly "undo" a commit while keeping your changes staged and worktree intact.
 
 ```bash
-# usually used to sqush commits, such as git rebase -i
+# usually used to squash commits, such as git rebase -i
 git reset --soft HEAD~3
 git commit . -m "squashed commits"
 ```
