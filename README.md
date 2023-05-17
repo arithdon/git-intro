@@ -25,6 +25,7 @@ Git is a version control system that allows multiple developers to contribute to
   - [create repo with porcelain commands](doc/git_internals.md#create-repo-with-porcelin-commands)
   - [create repo with plumbing commands](doc/git_internals.md#create-repo-with-plumbing-commands)
 - [Basic Usages](doc/basic_usage.md)
+  - [setup access to github](doc/basic_usage.md#setup-github-access)
 - [Advanced Topics](doc/advanced_topics.md)
   - [merge vs rebase](doc/advanced_topics.md#merge-vs-rebase)
   - [reset vs revert](doc/advanced_topics.md#reset-vs-revert)

@@ -1,5 +1,68 @@
 # Basic git usage
 
+## setup access to github
+
+There are two ways to access github.com: ssh and https. The ssh way is more convenient, but you need to setup ssh key first.
+
+- ssh way: use ssh key to access github.com
+
+```bash
+# generate ssh key pair
+ssh-keygen -t rsa -b 4096 # generate ssh key pair
+cat ~/.ssh/id_rsa.pub # copy public key to github.com
+
+# update ~/.ssh/config
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+# clone repo
+git clone git@github.com:arithdon/git-intro.git
+```
+
+- https way: use https token to access github.com
+
+see [here](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) on how to generate https token.
+
+```bash
+# generate https token in github.com
+GITHUB_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# update git config
+git config --global url.https://${GIT_TOKEN}@github.com/arithdon.insteadOf https://github.com/arithdon
+
+# clone repo
+git clone https://github.com/arithdon/git-intro.git
+```
+
+### **https vs ssh**
+
+Git over HTTPS can provide faster access than Git over SSH in some cases. There are a few reasons for this:
+
+- HTTPS uses cached credentials - After the initial login, HTTPS relies on cached credentials and does not prompt for your password again. SSH requires entering your password or SSH key passphrase each time it connects to the server.
+- HTTPS has fewer restrictions - HTTPS endpoints typically have higher limits for things like Git packfile sizes, shallow clones, etc. SSH is more restrictive by nature.
+- Direct file access - The Smart HTTP protocol used by Git allows direct access to .git/objects/pack files. This means Git can avoid recompressing packfiles that already exist on the server. Over SSH, Git cannot access these files directly.
+- Support for transfer compression - The Git HTTP protocol supports gzip compression of data, which can make a big difference for the initial clone of a large repo. Git SSH has no compression.
+- Caching proxies - Git HTTP can make use of caching proxies, since it is a standard HTTP API. This can speed up connections, especially over a slow network. SSH has no proxy support.
+
+However, there are also some downsides to Git over HTTPS:
+
+- Typically requires manual login - While credentials are cached, you still need to enter your username and password manually the first time. SSH keys can provide fully automated authentication.
+- No SSH features - You lose features from the SSH protocol like port-forwarding, tunnelling, etc. Raw HTTPS provides only Git connectivity.
+- Self-signed SSL certificates - To use HTTPS with a self-signed SSL cert, you need to disable SSL verification. This reduces the security, requiring blind trust in the endpoint.
+- Less widely supported - While HTTPS support has improved, some older Git servers still lack support for Git via HTTPS. SSH is considered a "standard" way to connect and is more widely supported.
+
+After clone a repo with ssh you can change it to https by:
+
+```bash
+git config --replace-all remote.origin.url "https://github.com/username/repo.git"
+
+# continue to use git pull/push but with https now.
+```
+
+Note that the first time you use https you will be asked for your username and password. After that, it will be cached in your system's credential store and you won't be asked for it again.
+
 ## git config
 
    ```bash
@@ -20,7 +83,7 @@
   echo "test" > README.md
   git add README.md
   git commit . -m "init commit"
-  git remote add origin git@github.com:arithdon/gittest.git
+  git remote add origin git@github.com:arithdon/git-intro.git
   git push origin master
   ```
 
@@ -28,10 +91,10 @@
 
   ```bash
   # clone:  get entire repo into local storage
-  git clone git@github.com:arithdon/gittest.git
+  git clone git@github.com:arithdon/git-intro.git
   
   # clone only one branch
-  git clone -b main --single-branch git@github.com:arithdon/gittest.git
+  git clone -b main --single-branch git@github.com:arithdon/git-intro.git
   
   # fetch: remote repo -- keep local repo intact
   git fetch upstream
