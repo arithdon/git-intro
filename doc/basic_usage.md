@@ -161,7 +161,7 @@ diff.external=~/bin/git-diff.sh
   ```bash
   # - shelve changes
   # - switch dev env
-  git stash -u save tmpfix
+  git stash save -u tmpfix
   git stash list
   git stash pop stash@{0}
   ```
