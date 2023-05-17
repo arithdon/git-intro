@@ -42,4 +42,5 @@ Git is a version control system that allows multiple developers to contribute to
 - [Code Review](doc/code_review.md)
   - [PR](doc/code_review.md#pr)
   - [codecollabrator](doc/code_review.md#codecollabrator)  
+- [More about git](doc/git_more.md)
 <!-- /TOC -->

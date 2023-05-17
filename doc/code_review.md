@@ -8,4 +8,4 @@
 
   code collabrator support generate review by git diff work directory
 
-[HOME](../README.md) | [PREV](git_workflows.md)
+[HOME](../README.md) | [PREV](git_workflows.md) | [NEXT](git_more.md)
