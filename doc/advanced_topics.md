@@ -51,9 +51,70 @@ work on** [^1]
 - rebase in feature branch and merge (fast-forward) in main branch is called ***git flow***
 - if you are not sure use merge
 
+### resolve conflict
+
+[here](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) and [here](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging) are good references for resolving conflicts. Strongly recommend to read them.
+
+The following is a recap of the above references:
+
+- Find the files with conflicts. These files will have conflict markers <<<<<<<, =======, and >>>>>>> in them. You can view conflicts by running ***git status*** or checking the files directly.
+
+```bash
+~/tests/project1 (dev4) $ git status
+On branch dev4
+Your branch is up to date with 'origin/dev4'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   d.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+- Open each file and determine how you want to resolve the conflicts. You'll need to choose which changes to keep and which to discard. Look for the content delimited by <<<<<<< and >>>>>>>.
+
+```bash
+cat d.txt
+<<<<<<< HEAD
+update10@d.txt
+=======
+update9@d.txt
+>>>>>>> main
+```
+
+- Edit the file to remove the conflict markers and merge the changes as you choose. For example:
+
+```bash
+cat d.txt
+update10@d.txt
+update9@d.txt
+```
+
+- Save merged file and stage it:
+
+```bash
+git add d.txt
+git merge --continue
+git push
+```
+
+**TIPS:**
+
+- Make sure you understand what is being changed before discarding or merging changes. Look at the file diffs to see the changes in each branch.
+- If possible, combine non-overlapping changes from each contributor. But choose one contributor's changes as the base if changes edit the same area.
+- Communicate with contributors whose changes you choose not to include and explain your reasoning. Collaboration will lead to better results.
+- If conflicts are too complex or time-sensitive, consider temporarily stashing changes to return to and resolve conflicts later when you have more focus.
+- You can choose to take one contributor's entire file as the resolution by simply keeping all of their content and commenting out the other contributor's markers. But only do this if you are comfortable those changes represent the correct resolution.
+- Don't forget to commit your resolved files when done. Uncommitted changes will remain as "unmerged" in Git.  
+
 ## reset vs revert
 
 ***git reset***
+
 git reset has three different modes:
 
 - --soft
