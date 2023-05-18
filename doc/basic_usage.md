@@ -8,15 +8,21 @@ There are two ways to access github.com: ssh and https. The ssh way is more conv
 
 ```bash
 # generate ssh key pair
-ssh-keygen -t rsa -b 4096 # generate ssh key pair
-cat ~/.ssh/id_rsa.pub # copy public key to github.com
+ssh-keygen -t ed25519 -b 4096 # generate ed25519 key pair
+cat ~/.ssh/id_ed25519.pub # copy public key to github.com
 
 # update ~/.ssh/config
 Host github.com
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_ed25519
+```
 
+>RSA keys (ssh-rsa) with a valid_after before November 2, 2021 may continue to use any signature algorithm. RSA keys generated after that date must use a SHA-2 signature algorithm. Some older clients may need to be upgraded in order to use SHA-2 signatures.
+
+[here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) is how to add your pub key to github.
+
+```bash
 # clone repo
 git clone git@github.com:arithdon/git-intro.git
 ```
