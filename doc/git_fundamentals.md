@@ -82,6 +82,31 @@ The following diagram[^1] shows the relationship between the three types of obje
 
 ![objects tree](data/git_objects_tree.png "git objects tree")
 
+### loose vs packfiles
+
+Git stores objects in two formats: loose and packfiles.
+
+Loose objects are individual compressed files on disk containing objects such as:
+
+- Blobs (file contents)
+- Trees (directory structures)
+- Commits (commit metadata)
+- Tags (tag metadata)
+
+These loose objects are stored in the .git/objects directory. Their filenames correspond to the hash of their content. For example:
+
+```bash
+.git/objects/56/3c64a280d146db1d02784cf5f12709f6dcd9c  # A blob object
+.git/objects/4b/825dc642cb6eb9a060e54bf8d69288fbee4904  # A commit object
+.git/objects/b2/5a3f2617f864e935bdaae8415ddaaa5eaf2033  # A tag object 
+```
+
+As a repository grows, the number of loose objects becomes less scalable. That's where packfiles come in.
+
+To optimize storage and performance, Git will periodically compress multiple loose objects into "packfiles" - binary files containing many Git objects. Git can then access objects in packfiles efficiently while taking up less disk space.
+
+Packfiles are stored in the .git/objects/pack directory. When Git encounters loose objects that could benefit from being packed, Git's git gc process compresses them into packfiles.
+
 ## Index
 
 The index is a binary file in .git/index that contains a sorted list of path names, each with permissions and the SHA-1 of a blob object.
