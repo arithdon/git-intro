@@ -14,6 +14,7 @@ Git is a version control system that allows multiple developers to contribute to
   - [Snapshots not differences](doc/what_is_git.md#snapshots-not-differences)  
 - [Git Fundamentals](doc/git_fundamentals.md)
   - [Porcelain and Plumbing](doc/git_fundamentals.md#porcelain-and-plumbing)
+  - [Git Database](doc/git_fundamentals.md#git-database)  
   - [Integrity](doc/git_fundamentals.md#integrity)
   - [Objects](doc/git_fundamentals.md#objects)
   - [Index](doc/git_fundamentals.md#index)

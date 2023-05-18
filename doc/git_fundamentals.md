@@ -29,6 +29,30 @@ Some examples of porcelain vs plumbing commands:
 | git status   | git-update-index|
 | git log   | git-rev-list|
 
+## git database
+
+The Git database contains all the metadata and objects for a Git repository. It is stored in the **.git** folder of the repository.
+
+The Git database contains:
+
+- The repository metadata (url, commits, tags, etc)
+- The object store which contains:
+  - Blobs: The raw file data
+  - Trees: Represent folders and point to blobs or other trees
+  - Commits: Point to a tree and references parent commits
+- References which include:
+  - Heads: Point to the latest commit on a branch
+  - Remotes: Point to the latest commit on a remote tracking branch
+  - Tags: Point to a specific commit
+
+Some key files in the Git database are:
+
+- HEAD: Points to the current branch reference
+- config: Contains repository configuration
+- index: The staging area/index file
+- objects/: Where all object files are stored
+- refs/: Contains references like heads, remotes and tags
+
 ## Integrity
 
 Everything in Git is checksummed before it is stored and is then referred to by that checksum.
